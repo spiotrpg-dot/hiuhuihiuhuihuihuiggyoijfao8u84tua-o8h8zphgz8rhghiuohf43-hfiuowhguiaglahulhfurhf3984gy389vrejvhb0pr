@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          crossorigin="anonymous" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/2.0.0-alpha.2/cropper.min.css"
+          integrity="sha512-6QxSiaKfNSQmmqwqpTNyhHErr+Bbm8u8HHSiinMEz0uimy9nu7lc/2NaXJiUJj2y4BApd5vgDjSHyLzC8nP6Ng=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link href="assets/png/icon-192x192.png" rel="icon" type="image/x-icon" />
+
+    <title>Lego Art Remix</title>
+
+    <meta property="og:title" content="Lego Art Remix" />
+    <meta property="og:image" content="https://lego-art-remix.com/assets/png/icon-960x960.png" />
+    <meta property="og:description" content="The Intelligent, Easy to Use Lego Mosaic Maker" />
+    <meta name="description" content="The Intelligent, Easy to Use Lego Mosaic Maker" />
+    <meta name="thumbnail" content="https://lego-art-remix.com/assets/png/icon-512x512.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FCE4EC" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <PageMap>
+        <DataObject type="thumbnail">
+            <Attribute name="src" value="https://lego-art-remix.com/assets/png/icon-512x512.png" />
+            <Attribute name="width" value="512" />
+            <Attribute name="height" value="512" />
+        </DataObject>
+    </PageMap>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        a {
+            text-decoration: none !important;
+        }custom-stud-table-body
+
+        #responsive-youtube {
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            position: relative;
+            height: 0;
+            font-size: 24px;
+        }
+
+            #responsive-youtube iframe {
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+            }
+        .btn {
+            background-color: #E21C21;
+        }
+        .btn3 {
+            background-color: #FFF1B8;
+        }
+        .btnstep1 {
+            background-color: #3787CF;
+            padding: 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none !important;
+            width: 100%;
+            border-width: 0;
+            border-radius: 15px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .btnColorWhite{
+            color:#ffffff;
+        }
+        .btn-link {
+            text-decoration: none !important;
+            width: 100%;
+            border-width: 0;
+            border-radius: 15px;
+            font-weight: bold;
+            color: #ffffff;
+ 
+        }
+        .btn-link:focus {
+            background-color: #8B0000;
+        }
+            .btn-link:visited {
+                background-color: #E21C21;
+            }
+        .btn-link:hover {
+           color: #ffffff;
+        }
+
+        .btn-outline-dark {
+            color: #ffffff !important;
+            background-color: #237841 !important;
+            border-radius: 15px;
+            box-shadow: none !important;
+            transition: all 0.3s ease;
+            border:none;
+            margin-top:10px;
+            margin-bottom:15px;
+        }
+
+        .btn-outline-dark2 {
+            color: #ffffff !important;
+            background-color: #FFCC00 !important;
+            border-radius: 15px;
+            box-shadow: none !important;
+            transition: all 0.3s ease;
+            border: none;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            padding: .375rem .75rem;
+        }
+
+        .paintbrush-controls-button {
+            background-color: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 10px;
+            height: 100%;
+            margin-right: 4px;
+            color: #333;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+
+        }
+        .paintbrush-controls-button:focus {
+            box-shadow:none;
+        }
+
+            .paintbrush-controls-button:hover:enabled {
+                background-color: #fafafa;
+            }
+
+        .step-3-canvas-2 {
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .step-3-canvas-3 {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .step-1 {
+            max-height: 70vh;
+        }
+        .step-3 {
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+            height: auto;
+        }
+
+        /* Tryb pełnoekranowy */
+        .step-3-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            background: #f8f8f8; /* tło, żeby nie było przezroczyste */
+            padding: 10px;
+            overflow: auto;
+        }
+
+
+        .card {
+            background-color: rgba(255, 255, 255, 1);
+            width: 100%; /* pełna szerokość kontenera */
+            max-width: 900px; /* ale nie większy niż 300px */
+            margin: 0 auto;
+            border:none;
+        }
+
+        .card-one {
+            background-color: #DCEEFF;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-height:800px;
+        }
+
+        .card-two {
+            background-color: #D4F3D8;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            
+        }
+        .card-three {
+            background-color: #FFF1B8;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card-four {
+            background-color: #F8D7D7;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            padding: 0;
+            border: 0;
+        }
+
+        .accordion-card {
+            margin-bottom: 4px;
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .accordion-card-body {
+            padding: 4px;
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        h4 {
+            line-height: 20px;
+            margin-bottom: 0;
+        }
+
+        step-header-subtitle {
+            margin-top: 2px;
+            margin-left: 2px;
+            font-weight: 700;
+        }
+
+        #nonzero-missing-pieces-warning {
+            color: #dc3545;
+        }
+
+        .checkbox-clickable {
+            cursor: pointer;
+        }
+
+        table {
+            border-top: 1px solid rgb(222, 226, 230);
+            border-left: 1px solid rgb(222, 226, 230);
+            border-bottom: 0;
+            border-right: 0;
+        }
+
+        td,
+        th {
+            border-top: 0;
+            border-left: 0;
+            border-bottom: 1px solid rgb(222, 226, 230);
+            border-right: 1px solid rgb(222, 226, 230);
+        }
+
+        .piece-count-infinity-placeholder {
+            padding-left: 2px;
+            padding-right: 2px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .cropper-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            max-height: 75vh;
+        }
+
+        .progress-bar.indeterminate {
+            position: relative;
+            animation: progress-indeterminate 3s linear infinite;
+        }
+
+        @keyframes progress-indeterminate {
+            from {
+                left: -50%;
+                width: 50%;
+            }
+
+            to {
+                left: 100%;
+                width: 50%;
+            }
+        }
+        h2 {
+            font-weight: bold; /* pogrubienie */
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        h3 {
+            font-weight: bold; /* pogrubienie */
+            color:#333333;
+        }
+
+        btn btn-link collapsed {
+            font-weight: bold; /* pogrubienie */
+            color: #333333;
+            border-radius: 15px;
+        }
+
+        .sliderAll {
+            appearance: none; /* usuwa domyślny styl przeglądarki */
+            width: 100%;
+            height: 6px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+            /* Kropka (uchwyt) — Chrome, Edge, Safari */
+            .sliderAll::-webkit-slider-thumb {
+                appearance: none;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%; /* zaokrąglona = kropka */
+                background: #E21C21; /* 🔴 kolor kropki */
+                cursor: pointer;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            }
+
+            /* Kropka — Firefox */
+            .sliderAll:-moz-range-thumb {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: #E21C21;
+                cursor: pointer;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            }
+
+        .btndropMenu {
+            background-color: #237841;
+            color: #ffffff !important;
+            border: none !important;
+            border-radius: 8px;
+            padding: 8px 8px;
+            margin-top: 2px;
+            display: block;
+            width: 100%;
+            clear: both;
+            cursor: pointer; /* 🔹 pokazuje "rączkę" */
+            transition: all 0.3s ease; /* płynne przejście koloru */
+        }
+        .btndropMenu:hover {
+            background-color: #AEE8B5;
+            color: white;
+            text-decoration: none;
+        }
+        .btndropMenu3 {
+            background-color: #FFCC00;
+            color: #ffffff !important;
+            border: none !important;
+            border-radius: 8px;
+            padding: 8px 8px;
+            margin-top: 2px;
+            display: block;
+            width: 100%;
+            clear: both;
+            cursor: pointer; 
+            transition: all 0.3s ease;
+        }
+
+            .btndropMenu3:hover {
+                background-color: #FFD633;
+                color: white;
+                text-decoration: none;
+            }
+        .btndropMenu2 {
+            background-color: #ffffff; /* białe tło */
+            color: #333333 !important; /* ciemnoszary tekst */
+            border: 2px solid #FFCC00; /* cienka żółta ramka pasująca do sekcji */
+            border-radius: 8px;
+            padding: 8px 8px;
+            margin-top: 2px;
+            display: block;
+            width: 100%;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* subtelny cień */
+        }
+
+            .btndropMenu2:hover {
+                background-color: #FFF5CC; /* bardzo jasny żółty przy hoverze */
+                color: #111111;
+                border-color: #FFD633;
+            }
+        .btn-sm {
+            color: #333;
+            font-size: 18px;
+            cursor: pointer;
+            width: 20%;
+            max-width: 30px;
+            height: 20%;
+            max-height: 30px;
+            display: inline-flex;
+            align-items: center;
+            background-color: #D4F3D8;
+            border-radius: 50%;
+        }
+            .btn-sm:hover {
+                background-color: #AEE8B5;
+                transform: scale(1.05);
+            }
+
+        .green-slider {
+            -webkit-appearance: none; /* usuwa domyślny styl przeglądarki */
+            width: 100%;
+            height: 7px;
+            background: #EDEDED; /* kolor toru */
+            border-radius: 5px;
+            outline: none;
+            margin-top:15px;
+            margin: auto;
+            flex-grow: 1;
+            min-width: 10px;
+        }
+
+
+            .green-slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%; /* kropka */
+                background: #4CAF50; /* kolor zielony */
+                cursor: pointer;
+                border: 2px solid #fff;
+                box-shadow: 0 0 4px rgba(0,0,0,0.3);
+            }
+
+            /* Okrągły zielony uchwyt — Firefox */
+            .green-slider:-moz-range-thumb {
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: #4CAF50;
+                cursor: pointer;
+                border: 2px solid #fff;
+                box-shadow: 0 0 4px rgba(0,0,0,0.3);
+            }
+
+        .btn-info {
+            text-decoration: none !important;
+            border-width: 0;
+            border-radius: 10px;
+            
+            color: #ffffff;
+            background-color: #237841;
+            margin-bottom: 30px;
+            margin-top: 5px;
+        }
+
+            .btn-info:hover {
+                background-color: #6FCF83;
+            }
+        .btn-info:focus {
+            border:none;
+            background-color: #237841;
+            box-shadow:none;
+        }
+        .trColors {
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            justify-content: flex-start;
+            display: flex;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .colorText {
+            font-size: 15px;
+            margin: auto;
+            text-align: left;
+            vertical-align: middle;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; /* usuwa podwójne granice  #FFDE5F, #F7B907 */
+            border-spacing: 0;
+            border: 2px solid #ddd;
+        }
+        .table td, .table th {
+            padding: .75rem;
+            vertical-align: middle;
+
+            border: none;
+        }
+        table tr {
+            border-bottom: 2px solid #ddd; /* pozioma linia pod każdym wierszem */
+        }
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.2s;
+        }
+        .action-btn:hover {
+            transform: scale(1.2);
+        }
+
+
+        #step-1, #step-2, #step-3, #step-4 {
+            display: none; /* domyślnie ukryte – JS pokazuje wybrany */
+            width: 100%;
+            
+            box-sizing: border-box;
+            /* overflow-y: auto; żeby można było przewijać, jeśli treść się nie mieści */
+            transition: opacity 0.4s ease-in-out;
+        }
+        #step-3 {
+            overflow-y: auto;
+        }
+            /* Styl dla aktywnego kroku */
+            #step-1.active, #step-2.active, #step-3.active, #step-4.active {
+                display: block;
+                opacity: 1;
+            }
+
+        /* Content area */
+        .content {
+            margin-left: 260px;
+            padding: 40px;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .step {
+            display: none;
+            background: white;
+            padding: 40px;
+            
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            max-height: 800px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+            .step.active {
+                display: block;
+            }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .sidebar {
+            height: 95%;
+            position: fixed;
+            width: 400px;
+            background: #fff;
+            border-radius: 15px;
+            overflow-y: auto;
+            padding: 20px;
+            font-family: "Poppins", sans-serif;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease; /* płynne zwężanie */
+        }
+
+        /* 🔹 Ekrany do 1400px – lekko zwęź */
+        @media (max-width: 1400px) {
+            .sidebar {
+                width: 350px;
+                padding: 18px;
+            }
+        }
+
+        /* 🔹 Ekrany do 1200px – średnie zwężenie */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 300px;
+                padding: 16px;
+            }
+        }
+
+        /* 🔹 Ekrany do 992px – kompaktowy sidebar */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 250px;
+                padding: 14px;
+            }
+        }
+
+        /* 🔹 Telefony / bardzo małe ekrany */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative; /* żeby nie zasłaniało treści */
+                width: 100%;
+                height: auto;
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        .menu-item {
+            padding: 12px 16px;
+            background: #DCEEFF;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 6px;
+            transition: background 0.2s;
+            z-index: 2;
+        }
+
+            .menu-item:hover {
+                background: #DCEEFF;
+            }
+
+        .menu-item2 {
+            padding: 12px 16px;
+            background: #E2F7E6;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 6px;
+            transition: background 0.2s;
+            z-index: 2;
+        }
+
+            .menu-item2:hover {
+                background: #E2F7E6;
+            }
+
+        .menu-item3 {
+            padding: 12px 16px;
+            background: #FFF1B8;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 6px;
+            transition: background 0.2s;
+            z-index: 2;
+        }
+        .menu-item4 {
+            padding: 12px 16px;
+            background: #F8D7D7;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 6px;
+            transition: background 0.2s;
+            z-index: 2;
+        }
+            .menu-item4:hover {
+                background: #F8D7D7;
+            }
+        .menu-item3:hover {
+            background: #FFF1B8;
+        }
+        .menu-text strong {
+            font-size: 16px;
+        }
+
+        .subtext {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Submenu */
+        .submenu {
+            display: none;
+            padding: 10px 20px;
+            background: #fafafa;
+            border-left: 3px solid #DCEEFF;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 10px;
+            margin-top: -10px;
+            z-index: 1;
+        }
+        .submenu2 {
+            display: none;
+            padding: 10px 20px;
+            background: #fafafa;
+            border-left: 3px solid #E2F7E6;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 10px;
+            margin-top: -10px;
+            z-index: 1;
+        }
+        .submenu3 {
+            display: none;
+            padding: 10px 20px;
+            background: #fafafa;
+            border-left: 3px solid #FFF1B8;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 10px;
+            margin-top: -10px;
+            z-index: 1;
+        }
+        .submenu4 {
+            display: none;
+            padding: 10px 20px;
+            background: #fafafa;
+            border-left: 3px solid #F8D7D7;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 10px;
+            margin-top: -10px;
+            z-index: 1;
+        }
+        /* Układ pionowy / poziomy */
+        .size-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+            margin-bottom:10px;
+        }
+
+        .dimension {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            color: #333;
+            min-width: 130px; /* zapewnia trochę odstępu od przycisków */
+        }
+
+        .icon {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        /* Cała reszta jak poprzednio */
+        .dimension {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-size {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 50%;
+            background-color: #e0e7ff;
+            color: #333;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+            .btn-size:hover {
+                background-color: #c7d8ff;
+                transform: scale(1.05);
+            }
+
+        .number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 36px;
+            font-weight: bold;
+            font-size: 16px;
+            background-color: #fff;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .info-icon-wrapper:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #canvas-container {
+            max-height: 700px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .cropper-bg {
+             max-height: 75vh;
+            background-color: #DCEEFF; /* np. jasnoszary */
+            background-image: none;
+        }
+
+
+        .info-icon {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .tooltip-text {
+            display: none;
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #222;
+            color: #fff;
+            padding: 6px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            width: 220px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .info-icon:hover .tooltip-text {
+            display: block;
+        }
+
+        #customStudContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+        }
+
+        .color-tile {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+            .color-tile:hover {
+                transform: scale(1.1);
+                border-color: #444;
+            }
+
+            .color-tile.inactive {
+                opacity: 0.4;
+                filter: grayscale(80%);
+                border-color: #999;
+            }
+
+        .color-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .color-tile {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+            .color-tile:hover {
+                transform: scale(1.15);
+                box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+            }
+
+            .color-tile.active {
+                outline: 2px solid #237841; /* zielona ramka aktywnego koloru */
+                outline-offset: 2px;
+            }
+
+        .modern-paintbrush-group .btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background: linear-gradient(145deg, #fefefe, #e9ecef);
+            font-weight: 500;
+            color: #333;
+            transition: all 0.2s;
+        }
+
+            /* Hover efekt przycisku */
+            .modern-paintbrush-group .btn:hover {
+                background: linear-gradient(145deg, #e9ecef, #dcdcdc);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
+        /* Dropdown menu nowoczesny */
+        .modern-dropdown-menu {
+             border-radius: 10px;
+             width: 100%;
+    padding: 0.3rem 0;
+    min-width: 160px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    border: none;
+    position: absolute;
+    z-index: 1000; /* <- dodaj */
+
+        }
+
+        /* Pozycje w menu */
+        .modern-dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            transition: background 0.2s, color 0.2s;
+            font-weight: 450;
+            color: #333;
+        }
+
+            /* Hover na item */
+            .modern-dropdown-item:hover {
+                background-color: #FFE599;
+                color: #000;
+            }
+
+        /* Ikony */
+        .dropdown-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+        }
+
+        .paintbrush-controls-container-left {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* wyrównanie do lewej */
+            gap: 8px; /* odstęp między przyciskami */
+            padding: 10px; /* opcjonalnie odstęp od lewej krawędzi */
+        }
+        .modern-paintbrush-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background: linear-gradient(145deg, #fefefe, #e9ecef);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 40px;
+            height: 40px;
+        }
+
+            /* Hover efekt */
+            .modern-paintbrush-btn:hover {
+                background: linear-gradient(145deg, #e9ecef, #dcdcdc);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+            }
+
+        /* Ikony w środku */
+        .modern-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        #mobile-warning {
+            display: none; /* domyślnie ukryty */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #C91A09;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-family: "Poppins", sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            z-index: 9999;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* pokaż na telefonach */
+        @media (max-width: 768px) {
+            #mobile-warning {
+                display: block;
+            }
+        }
+        .info-bar {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            color: #333;
+            text-align: center;
+            font-weight: 600;
+            font-family: "Poppins", sans-serif;
+        }
+       
+    </style>
+
+    <style class="dark-mode-stylesheet" disabled>
+
+        html,
+        body {
+            background-color: black;
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        html,
+        body,
+        .table,
+        .btn-outline-dark {
+            color: #d3d3d3;
+        }
+
+        .btn {
+            color: #ffffff;
+        }
+
+        .btnColorWhite {
+            color: #ffffff;
+        }
+
+        .btn-outline-dark {
+            color: #ffffff !important;
+            background-color: #0057A6 !important;
+            border-radius: 15px;
+            box-shadow: none !important;
+            transition: all 0.3s ease;
+        }
+        btn-outline-dark2 {
+            color: #d3d3d3;
+        }
+        .btn-outline-dark2 {
+            color: #ffffff !important;
+            background-color: #FFF176 !important;
+            border-radius: 15px;
+            box-shadow: none !important;
+            transition: all 0.3s ease;
+        }
+
+        .paintbrush-controls-button {
+            background-color: #1c1c1c;
+        }
+
+        .btn-warning,
+        .dropdown-item {
+            color: #212529;
+        }
+
+        .card {
+            background-color: rgb(255, 255, 255, 1);
+            border-radius: 20px;
+        }
+
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link.active {
+            background-color: rgb(33, 33, 33, 0.6);
+            border-color: rgb(50, 50, 50);
+        }
+
+        .nav-tabs {
+            border-bottom: 0;
+        }
+
+        table {
+            border-top: 1px solid rgb(50, 50, 50);
+            border-left: 1px solid rgb(50, 50, 50);
+        }
+
+        td,
+        th {
+            border-bottom: 1px solid rgb(50, 50, 50);
+            border-right: 1px solid rgb(50, 50, 50);
+        }
+
+        .table thead th {
+            border-bottom: 1px solid rgb(50, 50, 50);
+            border-top: 1px solid rgb(50, 50, 50);
+        }
+        h2 {
+            font-weight: bold; /* pogrubienie */
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        h3 {
+            font-weight: bold; /* pogrubienie */
+        }
+        btn btn-link collapsed {
+            font-weight: bold; /* pogrubienie */
+            color: #333333;
+            border-radius: 15px;
+        }
+        .btn.btn-link.collapsed {
+            font-weight: bold;
+            color: #333333;
+            border-radius: 15px;
+        }
+        .menu-info-item{
+            position:center;
+        }
+        #customStudContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            height: 28px;
+            padding: 10px;
+        }
+        .customStudContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            height: 28px;
+            padding: 10px;
+        }
+
+        .color-tile {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+            .color-tile:hover {
+                transform: scale(1.1);
+                border-color: #444;
+            }
+
+            .color-tile.inactive {
+                opacity: 0.4;
+                filter: grayscale(80%);
+                border-color: #999;
+            }
+
+        .color-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .color-tile {
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+            .color-tile:hover {
+                transform: scale(1.15);
+                box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+            }
+
+            .color-tile.active {
+                outline: 2px solid #237841; /* zielona ramka aktywnego koloru */
+                outline-offset: 2px;
+            }
+
+        #mobile-warning {
+            display: none; /* domyślnie ukryty */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #C91A09;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-family: "Poppins", sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            z-index: 9999;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* pokaż na telefonach */
+        @media (max-width: 768px) {
+            #mobile-warning {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+  <body>
+      <div style="margin: 0px;  overflow: hidden; min-height: calc(100vh)">
+
+          
+
+          <canvas id="background-image-cache-canvas" hidden></canvas>
+
+
+
+
+          <div>
+              <div class="progress" style="height: 8px; margin-bottom: 2px" id="universal-loading-progress">
+                  <div class="progress-bar indeterminate style=" height:10px"">
+                  </div>
+              </div>
+              <div style="height: 8px; margin-bottom: 2px" id="universal-loading-progress-complement" hidden></div>
+          </div>
+
+         
+
+
+              <main id="app" class="app" hidden>
+
+                  <div class="sidebar">
+
+                      <div id="mobile-warning">
+                          ⚠️ Dla najlepszych wrażeń użyj komputera lub tabletu w poziomie.
+                      </div>
+
+                      <h2>BrickArt Creator</h2>
+
+                      <div id="tooltip" style="display: none;position: fixed;background: #222;color: #fff;padding: 8px;border-radius: 8px;width: 220px;font-size: 11px;box-shadow: 0 2px 8px rgba(0,0,0,0.3);z-index: 10000;">
+                      </div>
+
+
+                      <div class="menu-item" data-step="1">
+                          <div class="menu-text">
+                              <strong>Step 1 : Crop + Scale</strong><br>
+                              <span class="subtext">Change Image</span>
+                          </div>
+                      </div>
+
+                      <div class="submenu" id="submenu-1">
+
+
+
+
+                          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                              <span style="font-size: 13px; color: #3787CF;">Baseplates – Quantity & Size</span>
+                              <span class="info-icon" data-tooltip="The number of horizontal and vertical baseplates determines the size of your Lego art. Each baseplate is 16×16 studs."
+                                    style="display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; cursor: pointer;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#333333" width="16" height="16">
+                                      <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42 -42-18.804-42-42 18.804-42 42-42zm56 282c0 6.627-5.373 12-12 12H212c-6.627 0-12-5.373-12-12v-28 c0-6.627 5.373-12 12-12h12v-88h-12c-6.627 0-12-5.373-12-12v-28c0-6.627 5.373-12 12-12h88 c6.627 0 12 5.373 12 12v128h12c6.627 0 12 5.373 12 12v28z" />
+                                  </svg>
+                              </span>
+                          </div>
+
+
+                          <div class="size-selector">
+                              <div class="dimension">
+                                  <div class="label">
+                                      <span>Vertical</span>
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-vertical-icon lucide-move-vertical"><path d="M12 2v20" /><path d="m8 18 4 4 4-4" /><path d="m8 6 4-4 4 4" /></svg>
+                                  </div>
+                                  <div class="control">
+                                      <button class="btn-size" onclick="changeSize('vertical', -1)">−</button>
+                                      <span id="height-slider" class="number">3</span>
+                                      <button class="btn-size" onclick="changeSize('vertical', 1)">+</button>
+                                  </div>
+                              </div>
+
+                              <div class="dimension">
+                                  <div class="label">
+                                      <span>Horizontal</span>
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-horizontal-icon lucide-move-horizontal"><path d="m18 8 4 4-4 4" /><path d="M2 12h20" /><path d="m6 8-4 4 4 4" /></svg>
+                                  </div>
+                                  <div class="control">
+                                      <button class="btn-size" onclick="changeSize('horizontal', -1)">−</button>
+                                      <span id="width-slider" class="number">4</span>
+                                      <button class="btn-size" onclick="changeSize('horizontal', 1)">+</button>
+                                  </div>
+                              </div>
+
+                              <div class="info-bar">
+                                  <span id="current-size">4×5 (64×80 cm)</span> </br>
+                                  <span id="current-price">1199 zł</span>
+                              </div>
+
+                          </div>
+
+                          <div class="card accordion-card">
+                              <div class="card-header" id="step-1-3-heading">
+                                  <h5 class="mb-0">
+                                      <button class="btnstep1 collapsed"
+                                              data-toggle="collapse"
+                                              data-target="#step-1-3-collapse"
+                                              aria-expanded="false"
+                                              aria-controls="step-1-3-collapse">
+                                          Change Image
+                                      </button>
+                                  </h5>
+                              </div>
+                              <div id="step-1-3-collapse"
+                                   class="collapse"
+                                   aria-labelledby="step-1-3-heading"
+                                   data-parent="#step-1-accordion">
+                                  <div class="card-body accordion-card-body" style="border-radius:15px; overflow:hidden;">
+                                      <div id="image-input-new"></div>
+
+                                      <p style="margin-left: 4px; margin-top: 4px ;font-size:12px;">
+                                          Supported image formats are dependent on your browser's compatibility
+                                      </p>
+                                      <p style="margin-bottom: 0; margin-left: 4px;font-size:12px;">
+                                          Due to the nature of the Lego Art sets, images with transparency aren't fully supported
+                                      </p>
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+
+
+
+                      <div class="menu-item menu-item2" data-step="2">
+                          <div class="menu-text">
+                              <strong>Step 2 : Adjust Colors</strong><br>
+                              <span class="subtext">HSV, Brightness & Contrast</span>
+                          </div>
+                      </div>
+
+                      <div class="submenu submenu2" id="submenu-2">
+
+
+                          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                              <span style="font-size: 13px; color: #237841;">Interpolation</span>
+                              <span class="info-icon" data-tooltip="Adjusts how bright or dark your image appears before converting it to Lego colors."
+                                    style="display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; cursor: pointer;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#333333" width="16" height="16">
+                                      <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42 -42-18.804-42-42 18.804-42 42-42zm56 282c0 6.627-5.373 12-12 12H212c-6.627 0-12-5.373-12-12v-28 c0-6.627 5.373-12 12-12h12v-88h-12c-6.627 0-12-5.373-12-12v-28c0-6.627 5.373-12 12-12h88 c6.627 0 12 5.373 12 12v128h12c6.627 0 12 5.373 12 12v28z" />
+                                  </svg>
+                              </span>
+                          </div>
+
+
+
+                          <div class="btn-group">
+                              <button class="btn dropdown-toggle btn-outline-dark btnColorWhite"
+                                      type="button"
+                                      id="interpolation-algorithm-button"
+                                      data-toggle="dropdown">
+                                  Browser Default
+                              </button>
+                              <div class="dropdown-menu " id="interpolation-algorithm-options"></div>
+                          </div>
+
+
+
+                          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                              <span style="font-size: 13px; color: #237841;">Adjust Image Colors (HSV)</span>
+                              <span class="info-icon" data-tooltip="Adjust the Hue, Saturation, and Value of the image."
+                                    style="display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; cursor: pointer;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#333333" width="16" height="16">
+                                      <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42 -42-18.804-42-42 18.804-42 42-42zm56 282c0 6.627-5.373 12-12 12H212c-6.627 0-12-5.373-12-12v-28 c0-6.627 5.373-12 12-12h12v-88h-12c-6.627 0-12-5.373-12-12v-28c0-6.627 5.373-12 12-12h88 c6.627 0 12 5.373 12 12v128h12c6.627 0 12 5.373 12 12v28z" />
+                                  </svg>
+                              </span>
+                          </div>
+
+                          <div style="width: 100%">
+                              <div>
+                                  Hue adjustment:
+                                  <span id="hue-text">0<span>&#176;</span></span>
+                              </div>
+                              <div style="display: flex; width: 100%; margin-bottom: 8px">
+                                  <button class="btn btn-sm" id="hue-decrement" style="flex-grow: 0">-</button>
+                                  <input type="range"
+                                         id="hue-slider"
+                                         name="points"
+                                         min="-180"
+                                         max="180"
+                                         class="green-slider" />
+                                  <button class="btn btn-sm" id="hue-increment" style="flex-grow: 0">+</button>
+                              </div>
+                          </div>
+
+                          <div style="width: 100%">
+                              <div>
+                                  Saturation adjustment:
+                                  <span id="saturation-text">0%</span>
+                              </div>
+                              <div style="display: flex; width: 100%; margin-bottom: 8px">
+                                  <button class="btn btn-sm" id="saturation-decrement" style="flex-grow: 0">-</button>
+                                  <input type="range"
+                                         id="saturation-slider"
+                                         name="points"
+                                         min="-100"
+                                         max="100"
+                                         class="green-slider" />
+
+                                  <button class="btn btn-sm" id="saturation-increment" style="flex-grow: 0">+</button>
+                              </div>
+                          </div>
+                          <div style="width: 100%">
+                              <div>
+                                  Value adjustment:
+                                  <span id="value-text">0%</span>
+                              </div>
+                              <div style="display: flex; width: 100%; margin-bottom: 8px">
+                                  <button class="btn btn-sm" id="value-decrement" style="flex-grow: 0">-</button>
+                                  <input type="range"
+                                         id="value-slider"
+                                         name="points"
+                                         min="-100"
+                                         max="100"
+                                         class="green-slider" />
+                                  <button class="btn btn-sm" id="value-increment" style="flex-grow: 0">+</button>
+                              </div>
+                          </div>
+                          <button class="btn btn-info" type="button" id="reset-hsv-button">Reset HSV</button>
+
+                          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                              <span style="font-size: 13px; color: #237841;">Brightness</span>
+                              <span class="info-icon" data-tooltip="Adjusts how bright or dark your image appears before converting it to Lego colors."
+                                    style="display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; cursor: pointer;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#333333" width="16" height="16">
+                                      <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42 -42-18.804-42-42 18.804-42 42-42zm56 282c0 6.627-5.373 12-12 12H212c-6.627 0-12-5.373-12-12v-28 c0-6.627 5.373-12 12-12h12v-88h-12c-6.627 0-12-5.373-12-12v-28c0-6.627 5.373-12 12-12h88 c6.627 0 12 5.373 12 12v128h12c6.627 0 12 5.373 12 12v28z" />
+                                  </svg>
+                              </span>
+                          </div>
+
+
+                          <div style="width: 100%">
+                              <div>
+                                  Brightness adjustment:
+                                  <span id="brightness-text">0</span>
+                              </div>
+                              <div style="display: flex; width: 100%; margin-bottom: 8px">
+                                  <button class="btn btn-sm" id="brightness-decrement" style="flex-grow: 0">-</button>
+                                  <input type="range"
+                                         id="brightness-slider"
+                                         name="points"
+                                         min="-128"
+                                         max="128"
+                                         class="green-slider" />
+                                  <button class="btn btn-sm" id="brightness-increment" style="flex-grow: 0">+</button>
+                              </div>
+                          </div>
+                          <button class="btn btn-info" type="button" id="reset-brightness-button">Reset Brightness</button>
+
+                          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                              <span style="font-size: 13px; color: #237841;">Contrast</span>
+                              <span class="info-icon" data-tooltip="Controls the difference between light and dark areas to enhance definition."
+                                    style="display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; cursor: pointer;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#333333" width="16" height="16">
+                                      <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42 -42-18.804-42-42 18.804-42 42-42zm56 282c0 6.627-5.373 12-12 12H212c-6.627 0-12-5.373-12-12v-28 c0-6.627 5.373-12 12-12h12v-88h-12c-6.627 0-12-5.373-12-12v-28c0-6.627 5.373-12 12-12h88 c6.627 0 12 5.373 12 12v128h12c6.627 0 12 5.373 12 12v28z" />
+                                  </svg>
+                              </span>
+                          </div>
+
+                          <div style="width: 100%">
+                              <div>
+                                  Contrast adjustment:
+                                  <span id="contrast-text">0</span>
+                              </div>
+                              <div style="display: flex;  width: 100%; margin-bottom: 8px">
+                                  <button class="btn btn-sm" id="contrast-decrement" style="flex-grow: 0">-</button>
+                                  <input type="range"
+                                         id="contrast-slider"
+                                         name="points"
+                                         min="-128"
+                                         max="128"
+                                         class="green-slider" />
+                                  <button class="btn btn-sm" id="contrast-increment" style="flex-grow: 0">+</button>
+                              </div>
+                          </div>
+                          <button class="btn btn-info" type="button" id="reset-contrast-button">Reset Contrast</button>
+
+
+
+                      </div>
+
+                      <div class="menu-item menu-item3" data-step="3">
+                          <div class="menu-text">
+                              <strong>Step 3 : Edit colors + Filter</strong><br>
+                              <span class="subtext">Manually edit or recolor selected bricks</span>
+                          </div>
+                      </div>
+                      <div class="submenu submenu3" id="submenu-3">
+
+                          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                              <span style="font-size: 13px; color: #FFCC00;">Color Accuracy Mode</span>
+                              <span class="info-icon" data-tooltip="Select how detailed the color conversion should be when adapting your image to LEGO colors."
+                                    style="display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; cursor: pointer;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#333333" width="16" height="16">
+                                      <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42 -42-18.804-42-42 18.804-42 42-42zm56 282c0 6.627-5.373 12-12 12H212c-6.627 0-12-5.373-12-12v-28 c0-6.627 5.373-12 12-12h12v-88h-12c-6.627 0-12-5.373-12-12v-28c0-6.627 5.373-12 12-12h88 c6.627 0 12 5.373 12 12v128h12c6.627 0 12 5.373 12 12v28z" />
+                                  </svg>
+                              </span>
+                          </div>
+
+                          <button class="btn2 dropdown-toggle btn-outline-dark2"
+                                  type="button"
+                                  id="distance-function-button"
+                                  data-toggle="dropdown">
+                              Euclidean RGB
+                          </button>
+
+                          <div class="dropdown-menu" id="distance-function-options"></div>
+
+                          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                              <span style="font-size: 13px; color: #FFCC00;">Available Bricks Colors</span>
+                              <span class="info-icon" data-tooltip="Here you can enable or disable specific colors used in the mosaic. Click a color to toggle it on or off."
+                                    style="display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; cursor: pointer;">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#333333" width="16" height="16">
+                                      <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42 -42-18.804-42-42 18.804-42 42-42zm56 282c0 6.627-5.373 12-12 12H212c-6.627 0-12-5.373-12-12v-28 c0-6.627 5.373-12 12-12h12v-88h-12c-6.627 0-12-5.373-12-12v-28c0-6.627 5.373-12 12-12h88 c6.627 0 12 5.373 12 12v128h12c6.627 0 12 5.373 12 12v28z" />
+                                  </svg>
+                              </span>
+                          </div>
+
+                          <div class="customStudContaine" id="customStudContainer"></div>
+
+                      </div>
+
+                      <div class="menu-item menu-item4" data-step="4">
+                          <div class="menu-text">
+                              <strong>Step 4 : The Finished Creation</strong><br>
+                              <span class="subtext">Order this Brick Art today</span>
+                          </div>
+                      </div>
+                      <div class="submenu submenu4" id="submenu-4">
+
+                          <div id="mosaic-summary">
+                              <p><strong>🧱 Use colors:</strong> <span id="summary-colors">–</span></p>
+                              <p><strong>📐 Tile count:</strong> <span id="summary-size">–</span></p>
+                              <p><strong>📏 Dimensions:</strong> <span id="summary-dimensions">–</span></p>
+                              <p><strong>💰 Price:</strong> <span id="summary-price">–</span></p>
+                          </div>
+
+                      </div>
+                     
+                      
+                  </div>
+
+                  <div class="content">
+
+                      <div id="step-1" class="step">
+                          <div class="card-one" style="padding: 20px;">
+                              <div class="tab-content">
+                                  <div class="tab-pane fade show active "                                   
+                                       id="step-1-color-tab-content"
+                                       role="tabpanel"
+                                       aria-labelledby="step-1-color-tab">
+                                      <div id="canvas-container" style="background-color: #f0f0f0; /* np. jasnoszary */}">
+                                          <canvas id="step-1-canvas-upscaled" class="cropper-img"></canvas>
+                                      </div>
+
+                                  </div>
+                                  
+                              </div>
+                          </div>
+                      </div>
+
+                      <div id="step-2" class="step">
+                          <div class="card-two" style="padding: 20px;">
+                              <div class="tab-content">
+                                  <div class="tab-pane fade show active"
+                                       id="step-2-color-tab-content"
+                                       role="tabpanel"
+                                       aria-labelledby="step-2-color-tab">
+                                      <canvas id="step-2-canvas" hidden></canvas>
+                                      <canvas id="step-2-canvas-upscaled"hidden ></canvas>
+
+                                      <canvas id="step-4-canvas-upscaled" class="step-3-canvas-2"></canvas>
+                                      <!--
+                                      <canvas id="step-3-canvas" hidden></canvas>
+                                     
+                                      <canvas id="step-3-canvas-upscaled" ; class ="step-3-canvas-2"></canvas>
+                                          -->
+                                      </div>
+                                  </div>
+                          </div>
+                      </div>
+
+                      <div id="step-3" class="step">
+                          <div class="card-three" style="padding: 20px; ">
+                              <div class="tab-content">
+                                  <div class="tab-pane fade show active"
+                                       id="step-3-color-tab-content"
+                                       role="tabpanel"
+                                       aria-labelledby="step-3-color-tab">
+                                      
+                                      <canvas id="step-3-canvas" hidden></canvas>
+
+                                      <canvas id="step-3-canvas-upscaled" ></canvas>
+                                      
+                                      <div class="paintbrush-controls-container-left">
+                                          <div style="margin-bottom: 4px">
+                                              <div class="btn-group modern-paintbrush-group">
+                                                  <button class="btn dropdown-toggle paintbrush-controls-button"
+                                                          type="button"
+                                                          id="paintbrush-tool-selection-dropdown"
+                                                          data-toggle="dropdown"
+                                                          aria-haspopup="true"
+                                                          aria-expanded="false">
+                                                      <span class="dropdown-icon">✏️</span>
+                                                      Brush
+                                                  </button>
+                                                  <div class="dropdown-menu"
+                                                       id="paintbrush-tool-selection-dropdown-options"
+                                                       aria-labelledby="paintbrush-tool-selection-dropdown">
+                                                      <a class="dropdown-item btndropMenu2 modern-dropdown-item" id="paintbrush-tool-dropdown-option">
+                                                          <span class="dropdown-icon">✏️</span>
+                                                          Brush
+                                                      </a>
+                                                      <a class="dropdown-item btndropMenu2 modern-dropdown-item" id="eraser-tool-dropdown-option">
+                                                          <span class="dropdown-icon">🧽</span>
+                                                          Eraser
+                                                      </a>
+                                                      <a class="dropdown-item btndropMenu2 modern-dropdown-item" id="dropdown-tool-dropdown-option">
+                                                          <span class="dropdown-icon">🎨</span>
+                                                          Dropper
+                                                      </a>
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <div style="margin-bottom: 4px">
+                                              <button class="btn paintbrush-controls-button"
+                                                      type="button"
+                                                      id="clear-overrides-button"
+                                                      data-toggle="tooltip"
+                                                      data-placement="top">
+
+                                                  <svg width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                      <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                                  </svg>
+                                              </button>
+                                          </div>
+                                          <div class="paintbrush-btn-wrapper">
+                                              <button class="btn modern-paintbrush-btn paintbrush-controls-button"
+                                                      type="button"
+                                                      id="toggle-expansion-button"
+                                                      data-toggle="tooltip"
+                                                      data-placement="top">
+                                                  <span class="modern-icon" id="expand-picture-svg">
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                          <polyline points="15 3 21 3 21 9"></polyline>
+                                                          <polyline points="9 21 3 21 3 15"></polyline>
+                                                          <line x1="21" y1="3" x2="14" y2="10"></line>
+                                                          <line x1="3" y1="21" x2="10" y2="14"></line>
+                                                      </svg>
+
+                                                  </span>
+                                                  <span class="modern-icon" id="collapse-picture-svg" hidden>
+                                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minimize2-icon lucide-minimize-2"><path d="m14 10 7-7" /><path d="M20 10h-6V4" /><path d="m3 21 7-7" /><path d="M4 14h6v6" /></svg>
+                                                  </span>
+                                              </button>
+                                          </div>
+                                      </div>
+                                      <span id="paintbrush-controls" style="margin-bottom: 4px"> </span>
+
+                                  </div>
+                                  </div>
+                          </div>
+                      </div>
+
+                      <div id="step-4" class="step">
+                          <div class="card-four" style="padding: 20px;">
+
+                              <div class="tab-content">
+                                  <div class="tab-pane fade show active"
+                                       id="step-4-color-tab-content"
+                                       role="tabpanel"
+                                       aria-labelledby="step-4-color-tab">
+                                      <canvas id="step-4-canvas" hidden></canvas>
+                                      <canvas id="bricklink-cache-canvas" hidden></canvas>
+                                      
+
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </main>
+
+
+
+              <div id="image-input-card" class="card card-body" style="padding-bottom: 10px">
+                  <div class="row">
+                      <div class="col-sm">
+                          <canvas id="input-canvas" hidden></canvas>
+                          <canvas id="input-depth-canvas" hidden></canvas>
+                          <div id="image-input">
+
+                              <section class="upload-section">
+                                  <h2>Upload Your Photo</h2>
+                                  <p>Choose a photo to turn it into your own LEGO® brick mosaic.</p>
+                                  <button class="white-btn" type="button" id="input-image-selector" disabled>
+                                      <input type="file" id="input-image-selector-hidden" name="input-image-selector-hidden" hidden />
+                                      <div class="upload-box" id="uploadBox">
+                                          <div class="upload-content">
+                                              <div class="upload-icon">+</div>
+                                              <p class="upload-text">Click to upload</p>
+                                              <p class="upload-subtext">JPG, PNG, or WEBP — up to 10MB</p>
+                                          </div>
+
+                                      </div>
+                                  </button >
+                              </section>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+     
+      
+
+
+              <style>
+                  
+                  #canvas3-container {
+                      max-height: 90vh;
+                      overflow: auto;
+                      display: flex;
+                      justify-content: center;
+                      align-items: flex-start;
+                  }
+
+
+                  #paintbrush-controls {
+                      flex: 0; 
+                      margin-top: 10px;
+                  }
+                  .white-btn {
+                      background-color: white;
+
+                      border: none;
+                      width: 100%;
+                      max-width: 500px; 
+                  }
+
+                  .upload-section {
+                      text-align: center;
+                      font-family: 'Poppins', sans-serif;
+                      color: #333;
+                      margin: 80px auto;
+                      max-width: 700px;
+                  }
+
+                      .upload-section h2 {
+                          font-size: 32px;
+                          font-weight: 700;
+                          margin-bottom: 10px;
+                      }
+
+                      .upload-section p {
+                          color: #555;
+                          margin-bottom: 25px;
+                      }
+
+                  .upload-box {
+                      border: 2px dashed #C91A09;
+                      border-radius: 16px;
+                      background: #fff;
+                      padding: 60px 20px;
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                      position: relative;
+                  }
+
+                      .upload-box:hover {
+                          background: #fff8f7;
+                          border-color: #E02E1A;
+                          box-shadow: 0 0 15px rgba(201, 26, 9, 0.1);
+                      }
+
+                  .upload-content {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      gap: 8px;
+                  }
+
+                  .upload-icon {
+                      font-size: 48px;
+                      color: #C91A09;
+                      margin-bottom: 5px;
+                  }
+
+                  .upload-text {
+                      font-weight: 600;
+                      color: #C91A09;
+                      font-size: 18px;
+                  }
+
+                  .upload-subtext {
+                      font-size: 14px;
+                      color: #888;
+                  }
+
+                  .upload-btn {
+                      margin-top: 25px;
+                      padding: 14px 28px;
+                      border: none;
+                      border-radius: 10px;
+                      background: #C91A09;
+                      color: white;
+                      font-weight: 600;
+                      font-size: 16px;
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                  }
+
+                      .upload-btn:disabled {
+                          background: #fff;
+                          cursor: not-allowed;
+                      }
+
+                      .upload-btn:hover:not(:disabled) {
+                          background: #E02E1A;
+                          box-shadow: 0 5px 12px rgba(201, 26, 9, 0.2);
+                      }
+
+                
+                  .upload-preview {
+                      display: block;
+                      max-width: 100%;
+                      height: auto;
+                      border-radius: 12px;
+                      transition: all 0.3s ease;
+                  }
+
+                  .upload-box.active {
+                      border-style: solid;
+                      border-color: #E02E1A;
+                      background: #fff3f2;
+                  }
+
+
+                  .paint-color-grid {
+                      display: flex;
+                      flex-wrap: wrap;
+                      gap: 6px;
+                      width:100%;
+                  }
+
+                  .paint-color-tile {
+                      width: 28px;
+                      height: 28px;
+                      border-radius: 6px;
+                      cursor: pointer;
+                      transition: transform 0.15s ease, box-shadow 0.15s ease;
+                      border: 2px solid transparent;
+                  }
+
+                      .paint-color-tile:hover {
+                          transform: scale(1.1);
+                          box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+                      }
+
+                      .paint-color-tile.active {
+                          border: 2px solid #333;
+                          box-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
+                      }
+
+                      .paint-color-tile[title]::after {
+                          content: attr(title);
+                          position: absolute;
+                          opacity: 0;
+                          visibility: hidden;
+                          background: #222;
+                          color: #fff;
+                          font-size: 11px;
+                          padding: 4px 8px;
+                          border-radius: 6px;
+                          white-space: nowrap;
+                          transform: translateY(-140%);
+                          transition: opacity 0.2s ease;
+                      }
+
+                      .paint-color-tile:hover::after {
+                          opacity: 1;
+                          visibility: visible;
+                      }
+
+                  #step-2-canvas-upscaled {
+                      max-height: 70vh;
+                      width: auto;
+                      height: auto;
+                      object-fit: contain;
+                      display: block;
+                      margin: 0 auto;
+                  }
+
+
+              </style>
+
+
+              <!-- Google Fonts -->
+              <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+
+
+
+          <script>
+
+              
+
+
+
+              function scaleCanvasToFit() {
+                  const canvas = document.getElementById("step-3-canvas-upscaled");
+                  const container = document.getElementById("canvas3-container");
+                  const ctx = canvas.getContext("2d");
+
+                  const img = new Image();
+                  img.src = canvas.toDataURL();
+                  img.onload = () => {
+                      const aspect = img.width / img.height;
+                      let newWidth = container.clientWidth;
+                      let newHeight = newWidth / aspect;
+                      if (newHeight > container.clientHeight) {
+                          newHeight = container.clientHeight;
+                          newWidth = newHeight * aspect;
+                      }
+                      canvas.width = newWidth;
+                      canvas.height = newHeight;
+                      ctx.drawImage(img, 0, 0, newWidth, newHeight);
+                  };
+              }
+
+
+              window.addEventListener('resize', () => {
+                  const canvas = document.getElementById('step-2-canvas-upscaled');
+                  if (canvas) {
+                      canvas.style.maxHeight = `${window.innerHeight * 0.8}px`;
+                  }
+              });
+              
+              document.querySelectorAll('.info-icon').forEach(icon => {
+                  icon.addEventListener('mouseenter', (e) => {
+                      tooltip.textContent = icon.dataset.tooltip; 
+                      tooltip.style.display = 'block';
+
+                      const rect = e.target.getBoundingClientRect();
+                      tooltip.style.top = (rect.top + window.scrollY + rect.height / 2 - tooltip.offsetHeight / 2) + 'px';
+                      tooltip.style.left = (rect.right + 8) + 'px';
+                  });
+
+                  icon.addEventListener('mouseleave', () => {
+                      tooltip.style.display = 'none';
+                  });
+              });
+
+              document.addEventListener("DOMContentLoaded", () => {
+                  const menuItems = document.querySelectorAll(".menu-item");
+                  const submenus = document.querySelectorAll(".submenu");
+
+                  menuItems.forEach((item) => {
+                      item.addEventListener("click", () => {
+                          const step = item.getAttribute("data-step");
+                         
+                          submenus.forEach((s) => s.classList.remove("active"));
+                          menuItems.forEach((m) => m.classList.remove("active"));
+                          item.classList.add("active");
+                          const submenu = document.getElementById(`submenu-${step}`);
+                          if (submenu) submenu.classList.add("active");
+                      });
+                  });
+              });
+
+
+              document.addEventListener("DOMContentLoaded", () => {
+                  const menuItems = document.querySelectorAll(".menu-item");
+                  const steps = document.querySelectorAll("#step-1, #step-2, #step-3, #step-4");
+                  const aaa = document.getElementById("step-4-canvas-upscaled");
+                  steps.forEach(step => step.style.display = "none");
+                  document.getElementById("step-1").style.display = "block";
+                  menuItems[0].classList.add("active");
+
+                  menuItems.forEach(item => {
+                      item.addEventListener("click", () => {
+                          const stepNumber = item.getAttribute("data-step");
+
+                          menuItems.forEach(i => i.classList.remove("active"));
+                          steps.forEach(s => s.style.display = "none");
+
+
+                          item.classList.add("active");
+                          
+                          document.getElementById(`step-${stepNumber}`).style.display = "block";
+
+                          if (stepNumber == 4) {
+
+                              xxx = document.getElementById("step-4-color-tab-content");
+                              xxx.insertBefore(aaa, xxx.firstChild);
+                          }
+                          else if (stepNumber == 2) {
+                              xxx = document.getElementById("step-2-color-tab-content");
+                              xxx.insertBefore(aaa, xxx.firstChild);
+                          }
+                          
+                      });
+                  });
+              });
+
+              function rgbToHex(r, g, b) {
+                  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+              }
+
+              function handleDarkModeChange() {
+                  const isDarkModeEnabled = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+                  Array.from(document.getElementsByClassName("dark-mode-stylesheet")).forEach((stylesheet) => {
+                      stylesheet.disabled = !isDarkModeEnabled;
+                  });
+
+                  const canvas = document.getElementById("background-image-cache-canvas");
+                  const ctx = canvas.getContext("2d");
+
+                  const CIRCLE_RADIUS = 10;
+                  const WIDTH_COUNT = 40;
+                  const HEIGHT_COUNT = 20;
+                  const MIN_CIRCLE_BRIGHTNESS = 245;
+
+                  canvas.width = CIRCLE_RADIUS * WIDTH_COUNT;
+                  canvas.height = CIRCLE_RADIUS * HEIGHT_COUNT;
+
+                  for (let i = 0; i < HEIGHT_COUNT; i++) {
+                      for (let j = 0; j < WIDTH_COUNT; j++) {
+                          ctx.beginPath();
+                          ctx.arc(
+                              CIRCLE_RADIUS + 2 * i * CIRCLE_RADIUS,
+                              CIRCLE_RADIUS + 2 * j * CIRCLE_RADIUS,
+                              CIRCLE_RADIUS,
+                              0,
+                              2 * Math.PI
+                          );
+                          let brightness = MIN_CIRCLE_BRIGHTNESS + Math.floor(Math.random() * (255 - MIN_CIRCLE_BRIGHTNESS));
+                          if (isDarkModeEnabled) {
+                              brightness = 255 - brightness;
+                          }
+                          ctx.fillStyle = getRandomColor();
+                          ctx.fill();
+                      }
+                  }
+
+                  const dataURL = canvas.toDataURL("image/png", 1.0);
+
+                  document.body.style.backgroundImage = `url('${dataURL}')`;
+              }
+
+              handleDarkModeChange();
+              window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", handleDarkModeChange);
+
+              function getRandomColor() {
+                  const colors = ["#3787CF", "#FFDE5F", "#BADA55", "#E21C21"];
+
+                  
+                  const alphaDecimal = 0.1 + Math.random() * 0.1;
+                  const alphaHex = Math.floor(alphaDecimal * 255).toString(16).padStart(2, '0');
+
+                  const color = colors[Math.floor(Math.random() * colors.length)];
+                  return color + alphaHex; 
+              }
+
+              const colors = ["#3787CF", "#FFDE5F", "#BADA55", "#E21C21"]; 
+
+          </script>
+
+
+          <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+          <script>
+              firebase.initializeApp({
+                  apiKey: "AIzaSyDZpG-5SrDxpwV9kmbwNiiKXJhg-qaH1d8",
+                  authDomain: "lego-art-remix-stats.firebaseapp.com",
+                  databaseURL: "https://lego-art-remix-stats.firebaseio.com",
+                  projectId: "lego-art-remix-stats",
+                  storageBucket: "lego-art-remix-stats.appspot.com",
+                  messagingSenderId: "622482243553",
+                  appId: "1:622482243553:web:3ef8ee3f3796190528dca0",
+              });
+          </script>
+
+          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                  crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                  crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+                  crossorigin="anonymous"></script>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+                  integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+                  crossorigin="anonymous"></script>
+          <script src="https://d3js.org/d3.v5.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/d3-color-difference"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/2.0.0-alpha.2/cropper.min.js"
+                  integrity="sha512-IlZV3863HqEgMeFLVllRjbNOoh8uVj0kgx0aYxgt4rdBABTZCl/h5MfshHD9BrnVs6Rs9yNN7kUQpzhcLkNmHw=="
+                  crossorigin="anonymous"
+                  referrerpolicy="no-referrer"></script>
+          <script src="js/pixi.min.js"></script>
+          <script src="js/bricklink-colors.js"></script>
+          <script src="js/stud-maps.js"></script>
+          <script src="js/heap.js"></script>
+          <script src="js/algo.js"></script>
+          <script src="js/index.js"></script>
+          <script src="js/metrics.js"></script>
+
+</body>
+</html>
