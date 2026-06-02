@@ -1968,7 +1968,7 @@ document.getElementById("orderButton").addEventListener("click", async () => {
     const height = targetResolution[1] / 16;
     const sizeKey = `${width}x${height}`;
     const selectedSize = sizeKey; // np. 2x3, 3x4 itp.
-    const canvas = document.getElementById("canvas");
+    const canvas = document.getElementById("step-4-canvas-upscaled");
     const imageData = canvas.toDataURL("image/png"); // obraz w base64
 
     const productId = productMap[selectedSize];
