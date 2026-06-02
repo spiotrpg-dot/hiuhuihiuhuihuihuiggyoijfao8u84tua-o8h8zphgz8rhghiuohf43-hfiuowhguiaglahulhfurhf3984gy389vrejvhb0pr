@@ -1653,74 +1653,74 @@ function getMosaicPrice(width, height, orientation = "square") {
     const sizeKey = `${width}x${height}`;
     const prices = {
         square: {
-            "2x2": 450,
-            "3x3": 900,
-            "4x4": 1550,
-            "5x5": 2350,
-            "6x6": 3200,
-            "7x7": 4200,
-            "8x8": 5200,
-            "9x9": 6300,
+            "2x2": 449,
+            "3x3": 899,
+            "4x4": 1549,
+            "5x5": 2349,
+            "6x6": 3199,
+            "7x7": 4199,
+            "8x8": 5199,
+            "9x9": 6299,
         },
         portrait: {
-            "2x3": 650,
-            "2x4": 850,
-            "2x5": 1050,
-            "2x6": 1200,
-            "2x7": 1400,
-            "2x8": 1550,
-            "2x9": 1700,
-            "3x4": 1200,
-            "3x5": 1450,
-            "3x6": 1700,
-            "3x7": 1950,
-            "3x8": 2250,
+            "2x3": 649,
+            "2x4": 849,
+            "2x5": 1049,
+            "2x6": 1199,
+            "2x7": 1399,
+            "2x8": 1549,
+            "2x9": 1699,
+            "3x4": 1199,
+            "3x5": 1449,
+            "3x6": 1699,
+            "3x7": 1949,
+            "3x8": 2249,
             "3x9": 2450,
-            "4x5": 1850,
-            "4x6": 2150,
-            "4x7": 2450,
-            "4x8": 2700,
-            "4x9": 2950,
-            "5x6": 2700,
-            "5x7": 3100,
-            "5x8": 3350,
-            "5x9": 3750,
-            "6x7": 3600,
-            "6x8": 4000,
-            "6x9": 4400,
-            "7x8": 4650,
-            "7x9": 5150,
-            "8x9": 5700,
+            "4x5": 1849,
+            "4x6": 2149,
+            "4x7": 2449,
+            "4x8": 2699,
+            "4x9": 2949,
+            "5x6": 2699,
+            "5x7": 3099,
+            "5x8": 3349,
+            "5x9": 3749,
+            "6x7": 3599,
+            "6x8": 3999,
+            "6x9": 4399,
+            "7x8": 4649,
+            "7x9": 5149,
+            "8x9": 5699,
         },
         landscape: {
-            "3x2": 650,
-            "4x2": 850,
-            "5x2": 1050,
-            "6x2": 1200,
-            "7x2": 1400,
-            "8x2": 1550,
-            "9x2": 1700,
-            "4x3": 1200,
-            "5x3": 1450,
-            "6x3": 1700,
-            "7x3": 1950,
-            "8x3": 2250,
-            "9x3": 2450,
-            "5x4": 1850,
-            "6x4": 2150,
-            "7x4": 2450,
-            "8x4": 2700,
-            "9x4": 2950,
-            "6x5": 2700,
-            "7x5": 3100,
-            "8x5": 3350,
-            "9x5": 3750,
-            "7x6": 3600,
-            "8x6": 4000,
-            "9x6": 4400,
-            "8x7": 4650,
-            "9x7": 5150,
-            "9x8": 5700,
+            "3x2": 649,
+            "4x2": 849,
+            "5x2": 1049,
+            "6x2": 1199,
+            "7x2": 1399,
+            "8x2": 1549,
+            "9x2": 1699,
+            "4x3": 1199,
+            "5x3": 1449,
+            "6x3": 1699,
+            "7x3": 1949,
+            "8x3": 2249,
+            "9x3": 2449,
+            "5x4": 1849,
+            "6x4": 2149,
+            "7x4": 2449,
+            "8x4": 2699,
+            "9x4": 2949,
+            "6x5": 2699,
+            "7x5": 3099,
+            "8x5": 3349,
+            "9x5": 3749,
+            "7x6": 3599,
+            "8x6": 3999,
+            "9x6": 4399,
+            "8x7": 4649,
+            "9x7": 5149,
+            "9x8": 5699,
         },
     };
 
@@ -1728,13 +1728,13 @@ function getMosaicPrice(width, height, orientation = "square") {
 }
 
 function studsToDimensions(widthBaseplates, heightBaseplates) {
-    const cmWidth = widthBaseplates * 12.8 + 0.8;
-    const cmHeight = heightBaseplates * 12.8 + 0.8;
+    const cmWidth = widthBaseplates * 12.8 + 1.6;
+    const cmHeight = heightBaseplates * 12.8 + 1.6;
     const inchWidth = cmWidth / 2.54;
     const inchHeight = cmHeight / 2.54;
     return {
-        cm: `${cmWidth.toFixed(1)} × ${cmHeight.toFixed(1)} cm`,
-        inches: `${inchWidth.toFixed(1)} × ${inchHeight.toFixed(1)} in`
+        cm: `${cmHeight.toFixed(1)} × ${cmWidth.toFixed(1)} cm`,
+        inches: `${inchHeight.toFixed(1)} × ${inchWidth.toFixed(1)} in`
     };
 }
 
@@ -1888,5 +1888,111 @@ function runStep1() {
         runStep2();
     }, 1); // TODO: find better way to check that input is finished
 }
+
+const productMap = {
+     "2x2": "5ae02c4d-29a1-6364-c27c-16e61682654b",
+    "2x3": "3a77b146-17d7-48dc-8282-6cba254375a3",
+    "2x4": "1a57b164-02f4-9345-7362-2b06602b3def",
+    "2x5": "ddcea709-8755-025c-15cf-e8b82738e64e",
+    "2x6": "b0057f9a-6779-431e-af16-29686f402eec",
+    "2x7": "7b9cc077-b3a3-c13c-f815-f8f90ca98861",
+    "2x8": "edb49639-70a3-46a1-5f2d-1037479f81e7",
+    "2x9": "8641e7d2-31a7-738d-0bca-046147cf891f",
+
+    "3x2": "021a12d3-5af8-ca09-050a-bca2cb873f0f",
+    "3x3": "125a0de2-ef47-4b9e-e848-bf97853090b2",
+    "3x4": "838b7d17-6639-4bcd-77fd-a6cb0b49d025",
+    "3x5": "427aaba2-bebe-a2e3-2e52-38e8b403e9dd",
+    "3x6": "6b85b6d5-e283-35c3-00ee-4b8f8ac14a37",
+    "3x7": "b90431fc-2d99-8461-a0c7-887c31059bf7",
+    "3x8": "c44dba6d-f9e8-f8c9-c98c-66eedb0ed8be",
+    "3x9": "8801dfd1-848e-d3e9-b2db-eb751e8f61da",
+
+    "4x2": "4ec55190-f2d7-2c9b-4b2f-baaae86ac9b6",
+    "4x3": "58cf231a-8de0-3e4f-51d0-0b1cd8352077",
+    "4x4": "d1375f05-fbe6-0ce3-2364-c8ccc85d502e",
+    "4x5": "5058e04c-d921-4805-cb50-3c23b6d64544",
+    "4x6": "8720ead7-3b56-2ced-ecbf-1d67bdf76bf7",
+    "4x7": "63c77818-08da-6749-765d-6fc926f3b6bb",
+    "4x8": "275abc10-4df2-f619-b5ff-b7da9b324bb3",
+    "4x9": "182aa7f4-8250-db79-5c1d-74031604a7df",
+
+    "5x2": "3239a549-70a8-6c5c-fa29-4b13a034ee64",
+    "5x3": "6697d3b9-a116-6a0f-9f85-11587fca2a4a",
+    "5x4": "0f17ab78-fde2-021c-247a-74594cdae3a7",
+    "5x5": "6d9811e4-58d6-c2f0-4670-3bcbef90468b",
+    "5x6": "d4be43af-67c2-e880-c366-0d434c2d4c38",
+    "5x7": "68c301c2-d4b8-5760-24ee-55f3b2ffb7a9",
+    "5x8": "dba72e9b-a7b4-096f-222a-ad209a1ca8d7",
+    "5x9": "01180055-37fd-5e75-0dfb-6c111a4cc2ce",
+
+    "6x2": "13cdebe7-fbf7-a0f2-7c3e-c8536904da8a",
+    "6x3": "211e651d-8746-71fc-5b54-8ef8297561b0",
+    "6x4": "f2b3f7a0-3305-8aad-cde4-d3fffa745a95",
+    "6x5": "938c7127-d84d-fbfa-0adb-9154df679c93",
+    "6x6": "96860742-20d4-3bc0-b751-128cb25784ea",
+    "6x7": "20f58566-1c20-e4a5-fb02-fa9a48ca0f88",
+    "6x8": "16515371-79f5-bc90-c990-b658b4001ba1",
+    "6x9": "5afac76f-267a-f32e-adbd-38e95a03a1fc",
+
+    "7x2": "4856bc5a-f5d0-8ad2-4042-ade18f4a24a1",
+    "7x3": "bdb1e715-da9c-70ad-ef0d-fcb4828c6f7d",
+    "7x4": "7ed33721-25df-3f97-f3d6-1f11a6653eea",
+    "7x5": "c29aafea-25d4-1cb6-e625-47cfc2619ef2",
+    "7x6": "ebb5a979-284a-117f-46bb-e81dbdd8e527",
+    "7x7": "eb6f8e8b-9078-d518-6a85-19ca90646886",
+    "7x8": "1c86b515-9b6f-47cd-9288-d292a49deea4",
+    "7x9": "3896f564-222c-9582-4afe-c0ab45dd5be5",
+
+    "8x2": "cbb02cc2-fdbf-f73a-c274-708ec582b621",
+    "8x3": "7b15749f-4d1b-7243-58b6-35c6ab909af8",
+    "8x4": "450e5f45-af95-5df6-36e5-e2a3753428e8",
+    "8x5": "486a7260-6d18-0768-789d-40ab5d1370eb",
+    "8x6": "312fdbf2-4499-e9d6-fd61-c8934af82826",
+    "8x7": "317e51da-7ef8-8940-23fc-523bf3a5c8a6",
+    "8x8": "dc8cf392-f5bc-75be-a6f3-9f83df5c19fa",
+    "8x9": "252267a3-eb66-7fd7-a40d-09beee7d8dc8",
+
+    "9x2": "a98c9845-a9d1-7d33-be34-a6e7474629a2",
+    "9x3": "894fd8f0-437b-9b94-d817-270f76927603",
+    "9x4": "cc0057da-bff9-6967-2b2e-e59345b389b5",
+    "9x5": "765a3be3-8c50-0d0d-ef8d-108c01ccf87c",
+    "9x6": "c45fc1d2-e793-55fc-7992-23640c709db2",
+    "9x7": "e2abf47f-8168-651e-7680-5a192b4792bb",
+    "9x8": "8fff01e0-9dd5-4f57-f569-25ac34c96339",
+    "9x9": "bcd3a779-cd54-d435-0df5-7ef8b226251c"
+};
+
+document.getElementById("orderButton").addEventListener("click", async () => {
+    const width = targetResolution[0] / 16;
+    const height = targetResolution[1] / 16;
+    const sizeKey = `${width}x${height}`;
+    const selectedSize = sizeKey; // np. 2x3, 3x4 itp.
+    const canvas = document.getElementById("canvas");
+    const imageData = canvas.toDataURL("image/png"); // obraz w base64
+
+    const productId = productMap[selectedSize];
+
+    if (!productId) {
+        alert("Error");
+        return;
+    }
+
+    const response = await fetch("https://spiotrpg.wixsite.com/_functions/dodajDoKoszyka", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productId, imageData })
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+        window.location.href = "https://spiotrpg.wixsite.com/suskabrick/cart-page"; // przekierowanie do koszyka
+    } else {
+        alert("Error adding to cart!");
+        console.error(result.error);
+    }
+});
+
 
 enableInteraction(); 
