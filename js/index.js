@@ -1978,7 +1978,7 @@ document.getElementById("orderButton").addEventListener("click", async () => {
         return;
     }
 
-    const response = await fetch("https://spiotrpg.wixsite.com/_functions/dodajDoKoszyka", {
+    const response = await fetch("https://spiotrpg.wixsite.com/suskabrick/_functions/dodajDoKoszyka", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ productId, imageData })
