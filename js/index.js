@@ -1978,38 +1978,33 @@ const productMap = {
 };
 
 document.getElementById("orderButton").addEventListener("click", async () => {
+
     const width = targetResolution[0] / 16;
     const height = targetResolution[1] / 16;
     const sizeKey = `${width}x${height}`;
-    const selectedSize = sizeKey; // np. 2x3, 3x4 itp.
+
     const canvas = document.getElementById("step-4-canvas-upscaled");
-    const imageData = canvas.toDataURL("image/png"); // obraz w base64
 
-    const productId = productMap[selectedSize];
-
-    if (!productId) {
-        alert("Error");
+    if (!canvas) {
+        alert("Canvas not found");
         return;
     }
 
-   const response = await fetch(
-    "https://spiotrpg.wixsite.com/suskabrick/_functions-dev/dodajDoKoszyka",
-    {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId, imageData })
-    }
-);
+    const imageData = canvas.toDataURL("image/png");
 
-    const result = await response.json();
+    const productId = productMap[sizeKey];
 
-    if (result.success) {
-        window.location.href = "https://spiotrpg.wixsite.com/suskabrick/cart-page"; // przekierowanie do koszyka
-    } else {
-        alert("Error adding to cart!");
-        console.error(result.error);
+    if (!productId) {
+        alert("Product ID not found");
+        return;
     }
+
+    window.parent.postMessage({
+        type: "ADD_TO_CART",
+        productId,
+        imageData
+    }, "*");
+
 });
-
 
 enableInteraction(); 
