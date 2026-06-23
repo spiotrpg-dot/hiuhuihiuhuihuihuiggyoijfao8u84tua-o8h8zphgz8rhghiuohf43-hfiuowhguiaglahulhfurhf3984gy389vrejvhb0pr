@@ -1968,8 +1968,6 @@ const productMap = {
 function incrementTransaction(count) {
     return (count || 0) + 1;
 }
-
-let targetResolution = [64, 48];
 const interactionSelectors = [
     "input-image-selector",
     "input-image-selector-hidden",
