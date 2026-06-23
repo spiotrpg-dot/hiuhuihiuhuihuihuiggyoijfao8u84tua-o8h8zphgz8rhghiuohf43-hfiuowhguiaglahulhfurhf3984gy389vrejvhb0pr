@@ -1977,11 +1977,30 @@ const productMap = {
     "9x9": "bcd3a779-cd54-d435-0df5-7ef8b226251c"
 };
 
-const btn = document.getElementById("orderButton");
-console.log("BUTTON:", btn);
+document.getElementById("orderButton").addEventListener("click", async () => {
 
-btn?.addEventListener("click", async () => {
     console.log("BUTTON CLICKED");
+
+    const width = targetResolution[0] / 16;
+    const height = targetResolution[1] / 16;
+    const sizeKey = `${width}x${height}`;
+
+    const canvas = document.getElementById("step-4-canvas-upscaled");
+
+    const imageData = canvas.toDataURL("image/png");
+
+    const productId = productMap[sizeKey];
+
+    console.log("PRODUCT:", productId);
+
+    window.parent.postMessage({
+        type: "ADD_TO_CART",
+        productId,
+        imageData
+    }, "*");
+
+    console.log("MESSAGE SENT");
+
 });
 
 enableInteraction(); 
