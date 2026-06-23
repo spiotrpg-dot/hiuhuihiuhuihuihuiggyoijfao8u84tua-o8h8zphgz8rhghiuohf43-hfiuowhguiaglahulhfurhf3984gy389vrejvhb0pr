@@ -1993,12 +1993,8 @@ document.getElementById("orderButton").addEventListener("click", async () => {
 
     console.log("PRODUCT:", productId);
 
-    window.parent.postMessage({
-        type: "ADD_TO_CART",
-        productId,
-        imageData
-    }, "*");
-
+window.top.location.href =
+`https://spiotrpg.wixsite.com/suskabrick/cart-page?productId=${productId}`;
     console.log("MESSAGE SENT");
 
 });
