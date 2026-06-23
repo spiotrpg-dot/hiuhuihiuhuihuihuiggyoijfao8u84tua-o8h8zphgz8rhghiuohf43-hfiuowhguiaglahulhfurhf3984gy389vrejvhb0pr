@@ -4,8 +4,6 @@ function incrementTransaction(count) {
     return (count || 0) + 1;
 }
 
-const LOW_DPI = 48;
-const HIGH_DPI = 96;
 
 let targetResolution = [64, 48];
 const interactionSelectors = [
