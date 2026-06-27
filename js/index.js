@@ -1993,10 +1993,10 @@ document.getElementById("orderButton").addEventListener("click", async () => {
 
     console.log("PRODUCT:", productId);
 
-//window.top.location.href =
-//`https://spiotrpg.wixsite.com/suskabrick/cart-page?productId=${productId}`;
+/*(window.top.location.href =
+`https://spiotrpg.wixsite.com/suskabrick/cart-page?productId=${productId}`;
     console.log("MESSAGE SENT");
-
+*/
 });
 
 try {
