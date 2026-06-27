@@ -1986,42 +1986,38 @@ document.getElementById("orderButton").addEventListener("click", async () => {
     const sizeKey = `${width}x${height}`;
 
     const canvas = document.getElementById("step-4-canvas-upscaled");
-
     const imageData = canvas.toDataURL("image/png");
 
     const productId = productMap[sizeKey];
 
     console.log("PRODUCT:", productId);
 
-/*(window.top.location.href =
-`https://spiotrpg.wixsite.com/suskabrick/cart-page?productId=${productId}`;
-    console.log("MESSAGE SENT");
-*/
+    try {
+        const response = await fetch(
+            "https://spiotrpg.wixsite.com/suskabrick/_functions-dev/dodajDoKoszyka",
+            {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    productId,
+                    imageData
+                })
+            }
+        );
+
+        console.log("STATUS:", response.status);
+
+        const text = await response.text();
+        console.log("RESPONSE:", text);
+
+    } catch (e) {
+        console.error("FETCH ERROR:", e);
+    }
+
 });
-
-try {
-    const response = await fetch(
-        "https://spiotrpg.wixsite.com/suskabrick/_functions-dev/dodajDoKoszyka",
-        {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                productId,
-                imageData
-            })
-        }
-    );
-
-    console.log("STATUS:", response.status);
-
-    const text = await response.text();
-    console.log("RESPONSE:", text);
-
-} catch (e) {
-    console.error("FETCH ERROR:", e);
-}
+Co zrobiłe
 
 enableInteraction(); 
