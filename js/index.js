@@ -2018,6 +2018,5 @@ document.getElementById("orderButton").addEventListener("click", async () => {
     }
 
 });
-Co zrobiłe
 
 enableInteraction(); 
