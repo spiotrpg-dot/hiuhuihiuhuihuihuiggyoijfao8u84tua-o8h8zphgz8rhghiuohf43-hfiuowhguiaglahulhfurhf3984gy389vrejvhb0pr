@@ -1999,4 +1999,29 @@ window.top.location.href =
 
 });
 
+try {
+    const response = await fetch(
+        "https://spiotrpg.wixsite.com/suskabrick/_functions-dev/dodajDoKoszyka",
+        {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                productId,
+                imageData
+            })
+        }
+    );
+
+    console.log("STATUS:", response.status);
+
+    const text = await response.text();
+    console.log("RESPONSE:", text);
+
+} catch (e) {
+    console.error("FETCH ERROR:", e);
+}
+
 enableInteraction(); 
