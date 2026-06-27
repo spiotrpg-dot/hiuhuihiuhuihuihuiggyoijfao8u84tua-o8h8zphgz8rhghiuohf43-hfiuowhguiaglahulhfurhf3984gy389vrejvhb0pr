@@ -1992,31 +1992,15 @@ document.getElementById("orderButton").addEventListener("click", async () => {
 
     console.log("PRODUCT:", productId);
 
-    try {
-        const response = await fetch(
-            "https://spiotrpg.wixsite.com/suskabrick/_functions-dev/dodajDoKoszyka",
-            {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    productId,
-                    imageData
-                })
-            }
-        );
+    window.parent.postMessage(
+    {
+        type: "ADD_TO_CART",
+        productId: productId,
+        imageData: imageData
+    },
+    "*");
 
-        console.log("STATUS:", response.status);
-
-        const text = await response.text();
-        console.log("RESPONSE:", text);
-
-    } catch (e) {
-        console.error("FETCH ERROR:", e);
-    }
+    console.log("POSTMESSAGE SENT");
 
 });
-
 enableInteraction(); 
