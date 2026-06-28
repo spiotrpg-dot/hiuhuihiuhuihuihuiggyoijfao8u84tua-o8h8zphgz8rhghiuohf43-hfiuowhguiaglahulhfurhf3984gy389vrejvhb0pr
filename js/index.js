@@ -2037,7 +2037,7 @@ function stepLegoLoader() {
 
 function showLegoLoader() {
     const overlay = document.getElementById("lego-loader-overlay");
-
+      console.log("Loading");
     if (!overlay) {
         return;
     }
