@@ -1977,6 +1977,103 @@ const productMap = {
     "9x9": "bcd3a779-cd54-d435-0df5-7ef8b226251c"
 };
 
+
+
+let legoLoaderInterval = null;
+let legoLoaderPositions = [0, 1, 2, 3];
+let legoEmptyPosition = 3;
+
+function addBrickStuds() {
+    document.querySelectorAll(".lego-brick").forEach((brick) => {
+        if (!brick.querySelector("span")) {
+            brick.appendChild(document.createElement("span"));
+            brick.appendChild(document.createElement("i"));
+        }
+    });
+}
+
+function updateLegoLoaderGrid() {
+    const bricks = [
+        document.getElementById("lego-brick-0"),
+        document.getElementById("lego-brick-1"),
+        document.getElementById("lego-brick-2"),
+        document.getElementById("lego-brick-3")
+    ];
+
+    bricks.forEach((brick, index) => {
+        const pos = legoLoaderPositions[index];
+        const row = Math.floor(pos / 2);
+        const col = pos % 2;
+
+        brick.style.transform = `translate(${col * 74}px, ${row * 74}px)`;
+        brick.style.position = "absolute";
+        brick.style.left = "0";
+        brick.style.top = "0";
+    });
+}
+
+function stepLegoLoader() {
+    const possibleMoves = {
+        0: [1, 2],
+        1: [0, 3],
+        2: [0, 3],
+        3: [1, 2]
+    };
+
+    const movablePositions = possibleMoves[legoEmptyPosition];
+    const nextPosition = movablePositions[Math.floor(Math.random() * movablePositions.length)];
+
+    const brickIndex = legoLoaderPositions.findIndex((pos) => pos === nextPosition);
+
+    if (brickIndex === -1) {
+        return;
+    }
+
+    legoLoaderPositions[brickIndex] = legoEmptyPosition;
+    legoEmptyPosition = nextPosition;
+
+    updateLegoLoaderGrid();
+}
+
+function showLegoLoader() {
+    const overlay = document.getElementById("lego-loader-overlay");
+
+    if (!overlay) {
+        return;
+    }
+
+    addBrickStuds();
+
+    overlay.style.display = "flex";
+
+    legoLoaderPositions = [0, 1, 2, 3];
+    legoEmptyPosition = 3;
+
+    updateLegoLoaderGrid();
+
+    clearInterval(legoLoaderInterval);
+    legoLoaderInterval = setInterval(stepLegoLoader, 420);
+}
+
+function hideLegoLoader() {
+    const overlay = document.getElementById("lego-loader-overlay");
+
+    if (overlay) {
+        overlay.style.display = "none";
+    }
+
+    clearInterval(legoLoaderInterval);
+}
+
+
+
+
+
+
+
+
+
+
 document.getElementById("orderButton").addEventListener("click", async () => {
 
     console.log("BUTTON CLICKED");
