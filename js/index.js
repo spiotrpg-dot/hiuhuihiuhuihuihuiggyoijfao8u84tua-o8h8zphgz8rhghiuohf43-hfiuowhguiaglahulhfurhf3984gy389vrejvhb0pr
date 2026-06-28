@@ -2078,6 +2078,8 @@ document.getElementById("orderButton").addEventListener("click", async () => {
 
     console.log("BUTTON CLICKED");
 
+    showLegoLoader();
+
     const width = targetResolution[0] / 16;
     const height = targetResolution[1] / 16;
     const sizeKey = `${width}x${height}`;
