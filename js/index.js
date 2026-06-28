@@ -1986,7 +1986,18 @@ document.getElementById("orderButton").addEventListener("click", async () => {
     const sizeKey = `${width}x${height}`;
 
     const canvas = document.getElementById("step-4-canvas-upscaled");
-    const imageData = canvas.toDataURL("image/png");
+
+const previewCanvas = document.createElement("canvas");
+const maxWidth = 1000;
+const scale = maxWidth / canvas.width;
+
+previewCanvas.width = maxWidth;
+previewCanvas.height = Math.round(canvas.height * scale);
+
+const previewCtx = previewCanvas.getContext("2d");
+previewCtx.drawImage(canvas, 0, 0, previewCanvas.width, previewCanvas.height);
+
+const imageData = previewCanvas.toDataURL("image/jpeg", 0.85);
 
     const productId = productMap[sizeKey];
 
