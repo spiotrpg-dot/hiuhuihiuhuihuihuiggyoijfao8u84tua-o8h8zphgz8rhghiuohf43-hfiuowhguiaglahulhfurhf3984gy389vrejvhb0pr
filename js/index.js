@@ -1996,9 +1996,10 @@ function updateLegoLoaderGrid() {
     const bricks = [
         document.getElementById("lego-brick-0"),
         document.getElementById("lego-brick-1"),
-        document.getElementById("lego-brick-2"),
-        document.getElementById("lego-brick-3")
+        document.getElementById("lego-brick-2")
     ];
+
+    const empty = document.getElementById("lego-brick-3");
 
     bricks.forEach((brick, index) => {
         const pos = legoLoaderPositions[index];
@@ -2010,6 +2011,14 @@ function updateLegoLoaderGrid() {
         brick.style.left = "0";
         brick.style.top = "0";
     });
+
+    const emptyRow = Math.floor(legoEmptyPosition / 2);
+    const emptyCol = legoEmptyPosition % 2;
+
+    empty.style.transform = `translate(${emptyCol * 74}px, ${emptyRow * 74}px)`;
+    empty.style.position = "absolute";
+    empty.style.left = "0";
+    empty.style.top = "0";
 }
 
 function stepLegoLoader() {
