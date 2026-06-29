@@ -1829,6 +1829,8 @@
 }
 
 .lego-brick {
+    z-index: 2;
+
     box-shadow:
         inset 0 -5px 0 rgba(0, 0, 0, 0.18),
         inset 0 4px 0 rgba(255, 255, 255, 0.28),
@@ -1892,7 +1894,10 @@
 
 .lego-empty {
     border: 2px dashed #cfcfcf;
-    background: #f7f7f7;
+    background: transparent;
+    box-shadow: none;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .lego-loader-subtitle {
