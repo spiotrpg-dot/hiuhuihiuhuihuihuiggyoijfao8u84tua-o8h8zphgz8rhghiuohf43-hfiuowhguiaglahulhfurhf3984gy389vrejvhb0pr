@@ -1446,7 +1446,7 @@ step3CanvasUpscaled.addEventListener("mousedown", (event) => {
         selectedPaintbrushTool === "dropdown-tool-dropdown-option"; 
 
     if (!isToolSelected) {
-        alert("Wybierz najpierw kolor pędzla lub narzędzie gumki! 🎨");
+        showModal("Select a Tool", "First, select a brush color or the eraser tool! 🎨");
         return;
     }
 
@@ -1642,6 +1642,7 @@ function runStep4(asyncCallback) {
                 const pieceKey = keyString.split("_");
                 const color = pieceKey[0];
                 const studRow = document.createElement("tr");
+      
                 studRow.style = "height: 1px;";
 
                 const colorCell = document.createElement("td");
