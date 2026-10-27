@@ -1439,6 +1439,48 @@ function onMouseMoveOverStep3Canvas(event) {
     step3CanvasHoveredPixel = [row, col];
 }
 
+function showModal(title, message) {
+    const overlay = document.createElement("div");
+
+    overlay.style.cssText = `
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999999;
+        padding: 20px;
+    `;
+
+    overlay.innerHTML = `
+        <div style="
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            max-width: 360px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+        ">
+            <h3 style="margin: 0 0 12px;">${title}</h3>
+            <p style="margin: 0 0 22px;">${message}</p>
+            <button type="button" style="
+                background: #222;
+                color: white;
+                border: none;
+                padding: 10px 30px;
+                border-radius: 8px;
+                cursor: pointer;
+            ">OK</button>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    overlay.querySelector("button").onclick = () => overlay.remove();
+}
+
 step3CanvasUpscaled.addEventListener("mousedown", (event) => {
     const isToolSelected =
         (selectedPaintbrushTool === "paintbrush-tool-dropdown-option" && activePaintbrushHex) ||
@@ -1453,6 +1495,8 @@ step3CanvasUpscaled.addEventListener("mousedown", (event) => {
     isMouseDown = true;
     onMouseMoveOverStep3Canvas(event);
 });
+
+
 
 step3CanvasUpscaled.addEventListener("mouseup", () => {
     isMouseDown = false;
